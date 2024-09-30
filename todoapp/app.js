@@ -20,9 +20,7 @@ const createTarea = (tarea) => {
     buttonEliminar.innerText = 'Eliminar';
     buttonEditar.innerText = 'Editar';
 
-    buttonEliminar.addEventListener('click', () => {
-        div.remove();
-    });
+    buttonEliminar.addEventListener('click', deleteItem);
 
     buttonEditar.addEventListener('click', () => {
         editTarea(div, p);
@@ -32,6 +30,11 @@ const createTarea = (tarea) => {
     div.appendChild(buttonEditar);
     div.appendChild(buttonEliminar);
     return div;
+}
+
+const deleteItem = (e) => {
+    const pa = e.target.parentElement;
+    pa.remove();
 }
 
 const editTarea = (div, p) => {
