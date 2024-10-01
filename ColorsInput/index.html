@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colores con JS</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        body div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="red" id="textoP1">Red</label>
+        <input type="range" id="red" min="0" max="255" value="0">
+        <label for="green" id="textoP2">Green</label>
+        <input type="range" id="green" min="0" max="255" value="0">
+        <label for="blue" id="textoP3">Blue</label>
+        <input type="range" id="blue" min="0" max="255" value="0">
+        <h2>color: <span>#FFFFFF</span></h2>
+    </div>
+    <script src="./styles_colorsinput.js"></script>
+</body>
+</html>
