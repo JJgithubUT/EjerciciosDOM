@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div dinámico</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: black;
+            color: aqua;
+        }
+        .container {
+            width: 50vw;
+            height: 50vh;
+            display: grid;
+            place-items: center;
+            border: 1px solid aqua;
+            border-radius: 1px;
+            box-shadow: none;
+        }
+        .innerContainer {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="caja">
+        <h2>クアドロージナミコー</h2>
+        <div class="innerContainer">
+            <label for="ancho">広い</label>
+            <input type="range" id="anchoCaja" min="50" max="80" value="50">
+        </div>
+        <div class="innerContainer">
+            <label for="largo">ラルゴ</label>
+            <input type="range" id="largoCaja" min="50" max="80" value="50">
+        </div>
+        <div class="innerContainer">
+            <label for="grosor">ボルデ</label>
+            <input type="range" id="grosorCaja" min="1" max="10" value="1">
+        </div>
+        <div class="innerContainer">
+            <label for="grosorSombra">黒いソンブら</label>
+            <input type="range" id="grosorSombraCaja" min="0" max="100" value="0">
+        </div>
+        <div class="innerContainer">
+            <label for="ejeXSombra">三</label>
+            <input type="range" id="ejeXSombraCaja" min="-50" max="50" value="0" step="10">
+        </div>
+        <div class="innerContainer">
+            <label for="ejeYSombra">川</label>
+            <input type="range" id="ejeYSombraCaja" min="-50" max="50" value="0" step="10">
+        </div>
+    </div>
+    <script src="./styles_divdin.js"></script>
+</body>
+</html>
