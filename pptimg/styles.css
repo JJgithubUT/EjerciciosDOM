@@ -1,0 +1,19 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    color: aqua;
+}
+.images .choices .result{
+    width: 100%;
+    text-align: center;
+}
+
+picture img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}

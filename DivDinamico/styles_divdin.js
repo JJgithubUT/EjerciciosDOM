@@ -11,29 +11,29 @@ let ejeXSombraValor = 0;
 let ejeYSombraValor = 0;
 let grosorSombraValor = 0;
 
-ancho.addEventListener('input', () => {
-    caja.style.width = ancho.value + "vw";
+ancho.addEventListener('input', (e) => {
+    caja.style.width = e.target.value + "vw";
 });
 
-largo.addEventListener('input', () => {
-    caja.style.height = largo.value + "vh";
+largo.addEventListener('input', (e) => {
+    caja.style.height = e.target.value + "vh";
 });
 
-grosor.addEventListener('input', () => {
-    caja.style.border = grosor.value + "px solid aqua";
+grosor.addEventListener('input', (e) => {
+    caja.style.border = e.target.value + "px solid aqua";
 });
 
-grosorSombra.addEventListener('change', (e) => {
+grosorSombra.addEventListener('input', (e) => {
     grosorSombraValor = e.target.value;
     caja.style.boxShadow = `${ ejeXSombraValor }px ${ ejeYSombraValor }px ${ grosorSombraValor }px aqua`;
 });
 
-ejeXSombra.addEventListener('change', (e) => {
+ejeXSombra.addEventListener('input', (e) => {
     ejeXSombraValor = e.target.value;
     caja.style.boxShadow = `${ ejeXSombraValor }px ${ ejeYSombraValor }px ${ grosorSombraValor }px aqua`; 
 });
 
-ejeYSombra.addEventListener('change', (e) => {
+ejeYSombra.addEventListener('input', (e) => {
     ejeYSombraValor = e.target.value;
     caja.style.boxShadow = `${ ejeXSombraValor }px ${ ejeYSombraValor }px ${ grosorSombraValor }px aqua`; 
 });
