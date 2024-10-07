@@ -16,4 +16,10 @@ picture img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
+    border: 8px solid aqua;
+    box-shadow: 10px 10px 10px aqua;
+}
+
+.result {
+    text-align: center;
 }
