@@ -1,6 +1,11 @@
 const inputTarea = document.getElementById('tareatxt');
 const btnAdd = document.getElementById('addtarea');
+const myForm = document.querySelector('#myform');
 const divTareas = document.getElementById('tareas');
+
+let tareas = [];
+
+let colorDeDiv = 0;
 
 const addTarea = () => {
     const tarea = inputTarea.value;
@@ -9,6 +14,11 @@ const addTarea = () => {
         inputTarea.value = '';
     }
 }
+
+myForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addTarea();
+})
 
 const createTarea = (tarea) => {
     const div = document.createElement('div');
@@ -29,6 +39,22 @@ const createTarea = (tarea) => {
     div.appendChild(p);
     div.appendChild(buttonEditar);
     div.appendChild(buttonEliminar);
+
+    switch (colorDeDiv) {
+        case 0:
+            div.classList.add('alert', 'danger');
+            colorDeDiv++;
+            break;
+        case 1:
+            div.classList.add('alert', 'warning');
+            colorDeDiv++;
+            break;
+        case 2:
+            div.classList.add('alert', 'success');
+            colorDeDiv = 0;
+            break;
+    }
+
     return div;
 }
 
