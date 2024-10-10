@@ -3,22 +3,57 @@ const btnAdd = document.getElementById('addtarea');
 const myForm = document.querySelector('#myform');
 const divTareas = document.getElementById('tareas');
 
-let tareas = [];
+const arrayTareas = localStorage.getItem('tareas')
+                           ? JSON.parse(localStorage.getItem('tareas'))
+                           : [];
 
 let colorDeDiv = 0;
 
 const addTarea = () => {
     const tarea = inputTarea.value;
     if (tarea.trim() !== "") {
-        divTareas.appendChild(createTarea(tarea));
         inputTarea.value = '';
+        arrayTareas.push({
+            tarea: tarea,
+            estado: 'danger',
+            id:Math.floor(Math.random() * 10000)
+
+        });
+        construyeDivs();
+        localStorage.setItem('tareas', JSON.stringify(arrayTareas));
     }
-}
+};
+
+const changeColor = (e) => {
+    const cDiv = e.target;
+    const encontrado = arrayTareas.findIndex(tarea => tarea.id === Number(id));
+    if(cDiv.classList.contains('danger')) {
+        cDiv.classList.remove('danger');
+        cDiv.classList.add('warning');
+        arrayTareas[encontrado].estado = "warning";
+    } else if (cDiv.classList.contains('warning')) {
+        cDiv.classList.remove('warning');
+        cDiv.classList.add('success');
+        arrayTareas[encontrado].estado = "success";
+    } else if (cDiv.classList.contains('success')) {
+        cDiv.classList.remove('success');
+        cDiv.classList.add('danger');
+        arrayTareas[encontrado].estado = "danger";
+    };
+    localStorage.setItem('tareas', JSON.stringify(arrayTareas));
+};
+
+construyeDivs = () => {
+    divTareas.innerHTML = '';
+    arrayTareas.forEach(tarea => {
+        divTareas.appendChild(createTarea(tarea));
+    });
+};
 
 myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     addTarea();
-})
+});
 
 const createTarea = (tarea) => {
     const div = document.createElement('div');
@@ -26,7 +61,7 @@ const createTarea = (tarea) => {
     const buttonEliminar = document.createElement('button');
     const buttonEditar = document.createElement('button');
 
-    p.innerText = tarea;
+    p.innerText = tarea.tarea;
     buttonEliminar.innerText = 'Eliminar';
     buttonEditar.innerText = 'Editar';
 
@@ -40,28 +75,20 @@ const createTarea = (tarea) => {
     div.appendChild(buttonEditar);
     div.appendChild(buttonEliminar);
 
-    switch (colorDeDiv) {
-        case 0:
-            div.classList.add('alert', 'danger');
-            colorDeDiv++;
-            break;
-        case 1:
-            div.classList.add('alert', 'warning');
-            colorDeDiv++;
-            break;
-        case 2:
-            div.classList.add('alert', 'success');
-            colorDeDiv = 0;
-            break;
-    }
+    div.classList.add('alert');
+    div.classList.add(tarea.estado);
+    div.setAttribute('data-id', tarea.id);
+
+    div.addEventListener('click', changeColor);
 
     return div;
-}
+};
 
 const deleteItem = (e) => {
-    const pa = e.target.parentElement;
-    pa.remove();
-}
+    const cDiv = e.target;
+    const encontrado = arrayTareas.findIndex(tarea => tarea.id === Number(id));
+    
+};
 
 const editTarea = (div, p) => {
     const inputEdit = document.createElement('input');
@@ -80,6 +107,7 @@ const editTarea = (div, p) => {
         div.replaceChild(p, inputEdit);
         div.replaceChild(buttonEditar, buttonGuardar);
     });
-}
+};
 
+construyeDivs();
 btnAdd.addEventListener('click', addTarea);

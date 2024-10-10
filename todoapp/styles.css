@@ -3,6 +3,8 @@ body {
     height: 100vh;
     place-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aqua;
+    background-color: black;
 }
 
 .container {
