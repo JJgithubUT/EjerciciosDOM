@@ -1,0 +1,16 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    text-align: center;
+    place-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aqua;
+    background-color: black;
+}
+
+#lienzo {
+    border: 10px solid aqua;
+    background-color: rgb(46, 46, 46);
+}
+
