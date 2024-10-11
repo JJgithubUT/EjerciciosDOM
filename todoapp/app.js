@@ -3,7 +3,7 @@ const btnAdd = document.getElementById('addtarea');
 const myForm = document.querySelector('#myform');
 const divTareas = document.getElementById('tareas');
 
-const arrayTareas = localStorage.getItem('tareas')
+let arrayTareas = localStorage.getItem('tareas')
                            ? JSON.parse(localStorage.getItem('tareas'))
                            : [];
 
@@ -16,7 +16,7 @@ const addTarea = () => {
         arrayTareas.push({
             tarea: tarea,
             estado: 'danger',
-            id:Math.floor(Math.random() * 10000)
+            id:Math.floor(Math.random() * 1000000)
 
         });
         construyeDivs();
@@ -26,22 +26,27 @@ const addTarea = () => {
 
 const changeColor = (e) => {
     const cDiv = e.target;
-    const encontrado = arrayTareas.findIndex(tarea => tarea.id === Number(id));
-    if(cDiv.classList.contains('danger')) {
-        cDiv.classList.remove('danger');
-        cDiv.classList.add('warning');
-        arrayTareas[encontrado].estado = "warning";
-    } else if (cDiv.classList.contains('warning')) {
-        cDiv.classList.remove('warning');
-        cDiv.classList.add('success');
-        arrayTareas[encontrado].estado = "success";
-    } else if (cDiv.classList.contains('success')) {
-        cDiv.classList.remove('success');
-        cDiv.classList.add('danger');
-        arrayTareas[encontrado].estado = "danger";
-    };
-    localStorage.setItem('tareas', JSON.stringify(arrayTareas));
+    const id = Number(cDiv.getAttribute('data-id'));
+    const encontrado = arrayTareas.findIndex(tarea => tarea.id === id);
+    
+    if (encontrado !== -1) {
+        if(cDiv.classList.contains('danger')) {
+            cDiv.classList.remove('danger');
+            cDiv.classList.add('warning');
+            arrayTareas[encontrado].estado = "warning";
+        } else if (cDiv.classList.contains('warning')) {
+            cDiv.classList.remove('warning');
+            cDiv.classList.add('success');
+            arrayTareas[encontrado].estado = "success";
+        } else if (cDiv.classList.contains('success')) {
+            cDiv.classList.remove('success');
+            cDiv.classList.add('danger');
+            arrayTareas[encontrado].estado = "danger";
+        };
+        localStorage.setItem('tareas', JSON.stringify(arrayTareas));
+    }
 };
+
 
 construyeDivs = () => {
     divTareas.innerHTML = '';
@@ -85,10 +90,13 @@ const createTarea = (tarea) => {
 };
 
 const deleteItem = (e) => {
-    const cDiv = e.target;
-    const encontrado = arrayTareas.findIndex(tarea => tarea.id === Number(id));
-    
+    const pa = e.target.parentElement;
+    const id = Number(pa.getAttribute('data-id'));
+    arrayTareas = arrayTareas.filter(tarea => tarea.id !== id);
+    pa.remove();
+    localStorage.setItem('tareas', JSON.stringify(arrayTareas));
 };
+
 
 const editTarea = (div, p) => {
     const inputEdit = document.createElement('input');
