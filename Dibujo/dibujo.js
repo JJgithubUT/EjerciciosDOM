@@ -18,6 +18,11 @@ h1Boton.addEventListener('click', () => {
         case 2:
             reiniciar();
             cuadroMinecraft();
+            cambiador = 3;
+            break;
+        case 3:
+            reiniciar();
+            cuadroPollo();
             cambiador = 0;
             break;
         default:
@@ -826,4 +831,49 @@ ctx.fillStyle = 'rgb(78,102,110)';
 ctx.fillRect(230, 310, 50, 10);
 ctx.fillStyle = 'rgb(6,95,103)';
 ctx.fillRect(280, 310, 40, 10);
+}
+
+const cuadroPollo = () => {
+ctx.fillStyle = 'rgb(104, 13, 13)';
+ctx.fillRect(0, 0, 400, 400);
+ctx.fillStyle = 'rgb(255,160,0)';
+ctx.beginPath();
+ctx.moveTo(270,150);
+ctx.lineTo(310,150);
+ctx.lineTo(277,180);
+ctx.fill();
+ctx.fillStyle = 'rgb(255,221,0)';
+ctx.beginPath();
+ctx.arc(200, 200, 50, 50, Math.PI * 2, true);
+ctx.fill();
+ctx.beginPath();
+ctx.arc(250, 170, 30, 30, Math.PI * 2, true);
+ctx.fill();
+ctx.fillStyle = 'red';
+ctx.beginPath();
+ctx.arc(250, 170, 5, 5, Math.PI * 2, true);
+ctx.fill();
+ctx.fillStyle = 'grey';
+ctx.beginPath();
+ctx.ellipse(100, 100, 60, 20, 0, 0, Math.PI * 2);
+ctx.fill();
+ctx.beginPath();
+ctx.ellipse(150, 100, 40, 15, 0, 0, Math.PI * 2);
+ctx.fill();
+ctx.beginPath();
+ctx.ellipse(180, 89, 40, 20, 0, 0, Math.PI * 2);
+ctx.fill();
+ctx.fillStyle = 'red';
+ctx.beginPath();
+ctx.arc(100, 100, 40, 40, Math.PI * 2, true);
+ctx.fill();
+ctx.fillStyle = 'grey';
+ctx.beginPath();
+ctx.ellipse(100, 120, 50, 10, 0, 0, Math.PI * 2);
+ctx.fill();
+ctx.beginPath();
+ctx.ellipse(80, 115, 40, 15, 0, 0, Math.PI * 2);
+ctx.fill();
+ctx.ellipse(70, 120, 50, 10, 0, 0, Math.PI * 2);
+ctx.fill();
 }
