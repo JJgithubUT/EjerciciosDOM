@@ -4,27 +4,27 @@ const h1Boton = document.querySelector('#h1Boton');
 let cambiador = 0;
 
 h1Boton.addEventListener('click', () => {
+    reiniciar();
     switch (cambiador) {
         case 0:
-            reiniciar();
             cuadroFrank();
             cambiador = 1;
             break;
         case 1:
-            reiniciar();
             cuadroCara();
             cambiador = 2;
             break;
         case 2:
-            reiniciar();
             cuadroMinecraft();
             cambiador = 3;
             break;
         case 3:
-            reiniciar();
             cuadroPollo();
-            cambiador = 0;
+            cambiador = 4;
             break;
+        case 4:
+            cuadroAdolf();
+            cambiador = 0;
         default:
             break;
     }
@@ -877,3 +877,43 @@ ctx.fill();
 ctx.ellipse(70, 120, 50, 10, 0, 0, Math.PI * 2);
 ctx.fill();
 }
+
+const cuadroAdolf = () => {
+ctx.fillStyle = 'rgb(160, 0, 0)';
+ctx.beginPath();
+ctx.fillRect(0, 0, 400, 400);
+ctx.fillStyle = 'rgb(255, 206, 163)';
+ctx.beginPath();
+ctx.fillRect(30, 120, 160, 160);
+ctx.fillStyle = 'black';
+ctx.beginPath();
+ctx.fillRect(30, 120, 160, 20);
+ctx.fillRect(30, 140, 20, 20);
+ctx.fillRect(110, 140, 80, 20);
+ctx.fillRect(150, 160, 40, 20);
+ctx.fillRect(170, 180, 20, 20);
+ctx.fillRect(130, 180, 20, 20);
+ctx.fillRect(70, 180, 20, 20);
+ctx.fillRect(90, 220, 40, 20);
+ctx.fillStyle = 'white';
+ctx.beginPath();
+ctx.fillRect(50, 180, 20, 20);
+ctx.fillRect(150, 180, 20, 20);
+ctx.fillStyle = 'rgb(156, 142, 127)';
+ctx.beginPath();
+ctx.fillRect(90, 240, 40, 20);
+ctx.fillStyle = 'white';
+ctx.beginPath();
+let a = 220;
+let b = 130;
+ctx.fillRect(0 + a, 0 + b, 140, 140);
+ctx.fillStyle = 'black';
+ctx.beginPath();
+ctx.fillRect(20 + a, 20 + b, 20, 40);
+ctx.fillRect(80 + a, 20 + b, 40, 20);
+ctx.fillRect(100 + a, 80 + b, 20, 40);
+ctx.fillRect(20 + a, 100 + b, 40, 20);
+ctx.fillRect(60 + a, 20 + b, 20, 100);
+ctx.fillRect(20 + a, 60 + b, 100, 20);
+}
+
