@@ -16,8 +16,8 @@ const ball = {
 }
 
 let direction = 1;
-let x = 1;
-let y = 1;
+let x = 0;
+let y = 2;
 
 setInterval(() => {
     ctx.clearRect(0, 0, 600, 400);
