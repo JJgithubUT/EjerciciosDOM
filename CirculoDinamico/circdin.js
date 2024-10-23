@@ -13,7 +13,7 @@ const circle = {
         const g = Math.floor(Math.random() * 255);
         const b = Math.floor(Math.random() * 255);
         const t = Math.random();
-        this.color = `rgb(${r},${g},${b},${t})`;
+        this.color = `hsl(${radio}, 50%, 50%)`;
     },
     show: function(){
         //reloadLienzo();
