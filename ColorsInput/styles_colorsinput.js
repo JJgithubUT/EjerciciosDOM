@@ -23,7 +23,7 @@ const toHexadecimal = (r,g,b) => {
     return `#${ redHex }${ greenHex }${ blueHex }`;
 }
 
-inputRed.addEventListener('change', (e) => {
+inputRed.addEventListener('input', (e) => {
     textoSpan.innerText = generateColor();
     redColor = e.target.value;
     cuerpo.style.backgroundColor = generateColor();
@@ -33,7 +33,7 @@ inputRed.addEventListener('change', (e) => {
     textoP3.style.color = toContrarioColorRGB(redColor, greenColor, blueColor);
 });
 
-inputGreen.addEventListener('change', (e) => {
+inputGreen.addEventListener('input', (e) => {
     textoSpan.innerText = generateColor();
     greenColor = e.target.value;
     cuerpo.style.backgroundColor = generateColor();
@@ -43,7 +43,7 @@ inputGreen.addEventListener('change', (e) => {
     textoP3.style.color = toContrarioColorRGB(redColor, greenColor, blueColor);
 });
 
-inputBlue.addEventListener('change', (e) => {
+inputBlue.addEventListener('input', (e) => {
     textoSpan.innerText = generateColor();
     blueColor = e.target.value;
     cuerpo.style.backgroundColor = generateColor();
