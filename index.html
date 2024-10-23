@@ -3,10 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOm Projects</title>
+    <title>DOM 4°B, 2Parcial</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #000; /* Usar código hexadecimal para colores */
+            color: #00f;
+            text-align: center;
+            overflow: hidden; /* Ajustar overflow correctamente */
+        }
+        .container_titulos {
+            width: 50vw;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 1px;
+            box-shadow: none;
+        }
+        .container {
+            width: 50vw;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Mejor uso de overflow-y */
+            align-items: center;
+            justify-content: flex-start; /* Alinea elementos al inicio */
+            border: 1px solid #00f;
+            border-radius: 1px;
+            box-shadow: 0px 0px 50px #00f;
+            padding: 10px; /* Usa px para padding consistente */
+        }
+        .box {
+            width: 80%;
+            background-color: #000;
+            border: 1px solid #00f;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 3px;
+            box-sizing: border-box; /* Asegura que padding se incluya en el tamaño */
+        }
+    </style>
 </head>
 <body>
-    <h1>Ejercicios para practicar DOM</h1>
-    
+    <div class="container_titulos">
+        <h1>Ejercicios DOM index</h1>
+        <h2>Creador: Juan Javier ・フアン様</h2>
+    </div>
+    <div class="container">
+        <div class="box">Caja 1</div>
+        <div class="box">Caja 2</div>
+        <div class="box">Caja 3</div>
+        <!-- Añade más cajas si es necesario -->
+    </div>
 </body>
 </html>

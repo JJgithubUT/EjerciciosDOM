@@ -1,8 +1,31 @@
 const lienzo = document.querySelector('#lienzo');
 const ctx = lienzo.getContext('2d');
+const contadorElem = document.querySelector('#contador');
+const puntosMaxElem = document.querySelector('#puntosMax');
+const puntosElem = document.querySelector('#puntos');
+const botonReiniciarPuntos = document.querySelector('#botonReiniciarPuntos');
+let puntosMax = 0;
+let puntosActuales = 0;
+let comidas = 3;
 ctx.font = "20px serif";
 
 let contador = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('maxScoreSnake') !== null) {
+        puntosMax = parseInt(localStorage.getItem('maxScoreSnake'), 10);
+        puntosMaxElem.innerText = puntosMax;
+    } else {
+        localStorage.setItem('maxScoreSnake', 0);
+    }
+
+    botonReiniciarPuntos.addEventListener('click', () => {
+        localStorage.setItem('maxScoreSnake', 0);
+        puntosMax = 0;
+        puntosMaxElem.innerText = puntosMax;
+        alert('Puntos reiniciados a 0');
+    });
+})
 
 const snake = [
     {
@@ -50,10 +73,28 @@ function checkEat(){
     if(snake[0].x === food.x && snake[0].y === food.y) {
         food.aparece();
         snake.push({...snake[1]});
-        snake.push({...snake[1]});
-        snake.push({...snake[1]});
-        snake.push({...snake[1]});
-        snake.push({...snake[1]});
+        comidas++;
+        contadorElem.textContent = comidas;
+
+        puntosActuales++;
+        puntosElem.innerText = puntosActuales;
+
+        // Verificar si los puntos actuales son mayores
+        // a los almacenados, entonces actualizamos.
+        if (puntosActuales > localStorage.getItem('maxScoreSnake')) {
+            localStorage.setItem('maxScoreSnake', puntosActuales);
+            puntosMax = puntosActuales;
+            puntosMaxElem.innerText = puntosMax;
+        }
+    }
+}
+
+function checkCollision() {
+    for (let i = 2; i < snake.length; i++) {
+        if (snake[0].x === snake[i].x && snake[0].y === snake[i].y) {
+            alert('¡Has perdido! No puedes chocar con tu cuerpo.');
+            location.reload();
+        }
     }
 }
 
@@ -79,19 +120,22 @@ food.aparece();
 setInterval(() => {
     ctx.clearRect(0, 0, 600, 400);
     nextMove(x, y);
+    checkCollision(); // CUIDADOOOOOOOOOOOOOOOOOOOOOOOOOO
     snake.forEach(i => i.show());
     food.show();
     checkEat();
-    if(direction === 1) x++;
+
+    if (direction === 1) x++;
     else if (direction === 2) y++;
     else if (direction === 3) x--;
     else y--;
-    // Validar limites
-    if(x > 29) x = 0;
-    else if(x < 1) x = 29;
-    if(y > 20) y = 1;
-    else if(y < 1) y = 20;
+
+    if (x > 29) x = 0;
+    else if (x < 0) x = 29;
+    if (y > 20) y = 0;
+    else if (y < 1) y = 20;
 }, 200);
+
 
 document.querySelector('body')
     .addEventListener('keydown', e => {
